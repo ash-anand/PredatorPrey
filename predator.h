@@ -6,10 +6,9 @@ Header file to define the predator functions
 and behaviour.
 **********************************************/
 
-#include <stdlib.h>				//Random number generator
 #include "grid.h"				//To import grid and grid functions
 #include "objective.h"			//To get the objective functions
-
+#include <math.h>
 
 class predator{
 	private:
@@ -19,7 +18,11 @@ class predator{
 		int no_objectives;			//Total number of objective function
 	public:
 
-		predator(Grid &grid);
+		predator(Point a);
 		Point get_position();
-		
-}
+		void move();
+		void attack();
+
+};
+
+#endif
