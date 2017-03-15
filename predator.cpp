@@ -60,7 +60,7 @@ void predator::move(Grid &grid){
 			}
 			break;
 
-		case 2:			//Moves in left direction
+		case 2:			//Moves in down direction
 			Point a = position;
 			a.y--;
 			a.y %= GRID_COLS;
@@ -70,7 +70,7 @@ void predator::move(Grid &grid){
 			}
 			break;
 
-		case 3:			//Moves in left direction
+		case 3:			//Moves in up direction
 			Point a = position;
 			a.y++;
 			a.y %= GRID_COLS;
