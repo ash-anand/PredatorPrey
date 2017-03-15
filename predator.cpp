@@ -43,7 +43,7 @@ void predator::move(Grid &grid){
 		case 0:			//Moves in left direction
 			Point a = position;
 			a.x--;
-			a.x %= GRID_ROW;
+			a.x %= GRID_ROW;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
 				position = a;
@@ -53,7 +53,7 @@ void predator::move(Grid &grid){
 		case 1:			//Moves in right direction
 			Point a = position;
 			a.x++;
-			a.x %= GRID_ROW;
+			a.x %= GRID_ROW;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
 				position = a;
@@ -63,7 +63,7 @@ void predator::move(Grid &grid){
 		case 2:			//Moves in down direction
 			Point a = position;
 			a.y--;
-			a.y %= GRID_COLS;
+			a.y %= GRID_COLS;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
 				position = a;
@@ -73,7 +73,7 @@ void predator::move(Grid &grid){
 		case 3:			//Moves in up direction
 			Point a = position;
 			a.y++;
-			a.y %= GRID_COLS;
+			a.y %= GRID_COLS;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
 				position = a;

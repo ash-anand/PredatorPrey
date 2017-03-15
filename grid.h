@@ -57,8 +57,8 @@ class Grid{
 		}
 
 		void update(Point to, Point from,int id){
-			matrix[to.x][to.y] = id;
-			matrix[from.x][from.y] = 0;
+			matrix[to.x%GRID_ROW][to.y%GRID_COLS] = id;
+			matrix[from.x%GRID_ROW][from.y%GRID_COLS] = 0;
 		}
 };
 
