@@ -43,6 +43,7 @@ void predator::move(Grid &grid){
 		case 0:			//Moves in left direction
 			Point a = position;
 			a.x--;
+			a.x += GRID_ROW;
 			a.x %= GRID_ROW;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
@@ -63,6 +64,7 @@ void predator::move(Grid &grid){
 		case 2:			//Moves in down direction
 			Point a = position;
 			a.y--;
+			a.y += GRID_COLS;
 			a.y %= GRID_COLS;		//Ensures circular property of grid
 			if(grid.isEmpty(a)){
 				grid.update(a,position,PREDATOR_ID);
@@ -82,54 +84,6 @@ void predator::move(Grid &grid){
 	}
 }
 
-/***************************************
-Function to return an array of 
-neighbours of a specified Predator at 
-Point a.
-Function has optional parameter to define
-neighbourhood type, default set to moore
-neighbourhood.
-***************************************/
-
-vector<Point> neighbours(Grid &grid,Point a,String neighbour_type="moore"){
-
-	vector<Point> neighbours;
-
-	switch(neighbour_type){
-		case "moore":
-			for(int i = a.x-1; i < a.x+2; i++)
-				for(int j = a.y - 1; j < a.y + 2; j++)
-					if(i == a.x && j == a.y)
-						continue;
-					else
-						if(!grid.isEmpty(i,j)){
-							neighbours.push_back(new Point(i,j));
-						}
-			break;
-		case "extended_moore":
-			for(int i = a.x-2; i < a.x+3; i++)
-				for(int j = a.y - 2; j < a.y + 3; j++)
-					if(i == a.x && j == a.y)
-						continue;
-					else
-						if(!grid.isEmpty(i,j)){
-							neighbours.push_back(new Point(i,j));
-						}
-			break;
-		case "von":
-			for(int i = a.x-1; i < a.x+2; i++)
-				for(int j = a.y - 1; j < a.y + 2; j++)
-					if(i == a.x && j == a.y)
-						continue;
-					else
-						if(!grid.isEmpty(i,j) && 
-							(i + j - a.x - a.y)%2 == 1){		//Chooses the + sign around the centre
-							neighbours.push_back(new Point(i,j));
-						}
-			break;
-	}
-
-}
 
 /***************************************
 Function to make the predator take their 
@@ -138,7 +92,17 @@ neighbourhood. If fails then simply
 calls the move() function.
 ***************************************/
 
-void attack(Grid &grid){
+void predator::attack(Grid &grid){
 
+	std::vector<Point> neighbours = grid.get_neighbours(position);		//Default call of moore neighbourhood
 
+	if(neighbours.empty())
+		for(int i = 0; i < PREDATOR_MOVES; i++)
+			move(grid);
+		else{
+			for(std::vector<Point>::iterator it = neighbours.begin(); it != neighbours.end(); ++it){
+				if(grid.get_id(it) == PREY_ID)
+					
+			}
+		}
 }
