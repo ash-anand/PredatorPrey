@@ -145,6 +145,10 @@ class Grid{
 			return neighbours;
 		}
 
+		//Returns the ID stored at point a
+		int get_id(Point a){
+			return matrix[a.x][a.y];
+		}
 };
 
 
