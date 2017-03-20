@@ -22,14 +22,33 @@ struct Point{
 class Grid{
 	int matrix[GRID_COLS][GRID_ROW];
 	public:
+
+		/*****************************
+		Default constructor to 
+		initialise the random number 
+		generator.
+		*****************************/
 		Grid(){
 			srand(NULL);
 		}
 
+		/*****************************
+		Function to return whether the
+		specific point is empty.
+		*****************************/
 		bool isEmpty(Point a){
 			return !(matrix[a.x][a.y]);
 		}
 
+		//Function Overloading
+		bool isEmpty(int x, int y){
+			return !(matrix[x][y]);
+		}
+
+		/*****************************
+		Generates a random point to 
+		initialize predators and prey
+		*****************************/
 		Point randPoint(){
 			Point a;
 			a.x = rand()%GRID_COLS;
@@ -37,6 +56,12 @@ class Grid{
 			return a;
 		}
 
+		/*****************************
+		Function to initialize the 
+		initial configuration and
+		placement of predator and 
+		prey.
+		*****************************/
 		void initialize(std::vector<predator> &pd, std::vector<prey> pr){
 			for (int i = 0; i < PREDATOR; ++i)
 			{
@@ -56,6 +81,11 @@ class Grid{
 			}
 		}
 
+		/******************************
+		Function to update the position
+		of any creature once they move
+		or attack.
+		******************************/
 		void update(Point to, Point from,int id){
 			matrix[to.x%GRID_ROW][to.y%GRID_COLS] = id;
 			matrix[from.x%GRID_ROW][from.y%GRID_COLS] = 0;
