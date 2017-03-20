@@ -105,7 +105,7 @@ class Grid{
 		neighbourhood.
 		***************************************/
 
-		vector<Point> neighbours(Grid &grid,Point a,String neighbour_type="moore"){
+		vector<Point> get_neighbours(Grid &grid,Point a,String neighbour_type="moore"){
 
 			vector<Point> neighbours;
 
