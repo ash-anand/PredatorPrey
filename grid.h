@@ -17,6 +17,11 @@
 struct Point{
 	int x;
 	int y;
+	//Constructor to initialise a Point structure from x y int values
+	Point(int _x,int _y){
+		x = _x;
+		y = _y;
+	}
 };
 
 class Grid{
