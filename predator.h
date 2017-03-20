@@ -25,6 +25,7 @@ class predator{
 		predator(Point a);
 		Point get_position();
 		void attack(Grid &grid);
+		void move(Grid&);
 
 };
 

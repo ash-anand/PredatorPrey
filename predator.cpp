@@ -81,3 +81,64 @@ void predator::move(Grid &grid){
 			break;
 	}
 }
+
+/***************************************
+Function to return an array of 
+neighbours of a specified Predator at 
+Point a.
+Function has optional parameter to define
+neighbourhood type, default set to moore
+neighbourhood.
+***************************************/
+
+vector<Point> neighbours(Grid &grid,Point a,String neighbour_type="moore"){
+
+	vector<Point> neighbours;
+
+	switch(neighbour_type){
+		case "moore":
+			for(int i = a.x-1; i < a.x+2; i++)
+				for(int j = a.y - 1; j < a.y + 2; j++)
+					if(i == a.x && j == a.y)
+						continue;
+					else
+						if(!grid.isEmpty(i,j)){
+							neighbours.push_back(new Point(i,j));
+						}
+			break;
+		case "extended_moore":
+			for(int i = a.x-2; i < a.x+3; i++)
+				for(int j = a.y - 2; j < a.y + 3; j++)
+					if(i == a.x && j == a.y)
+						continue;
+					else
+						if(!grid.isEmpty(i,j)){
+							neighbours.push_back(new Point(i,j));
+						}
+			break;
+		case "von":
+			for(int i = a.x-1; i < a.x+2; i++)
+				for(int j = a.y - 1; j < a.y + 2; j++)
+					if(i == a.x && j == a.y)
+						continue;
+					else
+						if(!grid.isEmpty(i,j) && 
+							(i + j - a.x - a.y)%2 == 1){		//Chooses the + sign around the centre
+							neighbours.push_back(new Point(i,j));
+						}
+			break;
+	}
+
+}
+
+/***************************************
+Function to make the predator take their 
+turns and attack the prey in their 
+neighbourhood. If fails then simply 
+calls the move() function.
+***************************************/
+
+void attack(Grid &grid){
+
+
+}
