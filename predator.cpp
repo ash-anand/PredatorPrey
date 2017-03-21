@@ -101,8 +101,12 @@ void predator::attack(Grid &grid){
 			move(grid);
 		else{
 			for(std::vector<Point>::iterator it = neighbours.begin(); it != neighbours.end(); ++it){
-				if(grid.get_id(it) == PREY_ID)
-					
+				if(grid.get_id(it) == PREY_ID){
+					Prey p = findweakest(neighbours);
+					if(!p){
+						grid.update(p.get_position(),position,PREDATOR_ID);
+					}
+				}
 			}
 		}
 }
