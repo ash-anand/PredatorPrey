@@ -100,7 +100,7 @@ void predator::attack(Grid &grid){
 		for(int i = 0; i < PREDATOR_MOVES; i++)
 			move(grid);
 		else{
-			Prey p = findweakest(neighbours);
+			Prey p = grid.findweakest(neighbours);
 			if(!p){
 				grid.update(p.get_position(),position,PREDATOR_ID);
 			}

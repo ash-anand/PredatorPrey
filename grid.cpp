@@ -1,11 +1,11 @@
 #include "grid.h"
 
-    /*****************************
-		Function to initialize the 
-		initial configuration and
-		placement of predator and 
-		prey.
-		*****************************/
+/*****************************
+Function to initialize the 
+initial configuration and
+placement of predator and 
+prey.
+*****************************/
 
 void Grid::initialize(std::vector<predator> &pd, std::vector<prey> pr){
 			for (int i = 0; i < PREDATOR; ++i)
@@ -27,14 +27,14 @@ void Grid::initialize(std::vector<predator> &pd, std::vector<prey> pr){
 		}
     
     
-		/***************************************
-		Function to return an array of 
-		neighbours of a specified creature at 
-		Point a.
-		Function has optional parameter to define
-		neighbourhood type, default set to moore
-		neighbourhood.
-		***************************************/
+/***************************************
+Function to return an array of 
+neighbours of a specified creature at 
+Point a.
+Function has optional parameter to define
+neighbourhood type, default set to moore
+neighbourhood.
+***************************************/
     
 vector<Point> Grid::get_neighbours(Point a,String neighbour_type="moore"){
 
