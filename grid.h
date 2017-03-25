@@ -3,12 +3,6 @@
 
 #define GRID_ROW 300
 #define GRID_COLS 300
-#define PREDATOR 30
-#define PREY 300
-#define PREDATOR_MOVES 10
-#define PREY_MOVES 5
-#define PREDATOR_ID 2
-#define PREY_ID 1
 
 #include <stdlib.h>				//Random number generator
 #include <math.h>
